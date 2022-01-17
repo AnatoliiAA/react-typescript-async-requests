@@ -43,13 +43,20 @@ export const ItemsList = ({ isLoaded }: itemsListProps): JSX.Element => {
   };
 
   const decrementQuantity = (id: number): void => {
+    let shouldBeRomoved: boolean = false;
     const updatedState = appState.products.map((product: productType) => {
-      if (product.id === id && product.quantity >= 1) {
+      if (product.id === id) {
         product.quantity--;
+      }
+      if (product.quantity == 0) {
+        shouldBeRomoved = true;
       }
       return product;
     });
     setAppState({ ...appState, products: updatedState });
+    if (shouldBeRomoved) {
+      handleDelete(id);
+    }
   };
 
   return (
