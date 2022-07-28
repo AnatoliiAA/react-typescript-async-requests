@@ -1,5 +1,5 @@
 export const getRandomCart = async () => {
-  const randomNumber = Math.floor(Math.random() * 6000 + 1);
+  const randomNumber = Math.floor(Math.random() * 10 + 1);
   try {
     const response = await fetch(
       `https://fakestoreapi.com/carts/${randomNumber}`
